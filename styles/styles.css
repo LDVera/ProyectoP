@@ -13,3 +13,23 @@
 .titulor {
     font-size: 40px;
 }
+
+.administradoresC {
+    height: 1000px;
+    background-color: black;
+}
+
+.lat {
+    height: 1000px;
+    background-color: blue;
+}
+
+.ADbienvenida {
+    color: white;
+    font-size: xx-large;
+}
+
+.ADlat {
+    color: white;
+    font-size: xx-large;
+}
