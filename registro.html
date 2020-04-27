@@ -48,9 +48,15 @@
                 </div>
                 <div class="row">
                     <div class="col-10 mx-auto mt-3">
-                        <form action="">
+                        <form action="conexion/conex.php" method="POST">
                             <div class="input-group">
                                 <input type="text" class="form-control" name="Usuario" placeholder="nombre de usuario">
+                            </div>
+                            <div class="input-group mb-3 mt-3">
+                                <input type="text" class="form-control" name="UsuarioApePaterno" placeholder="Apellido Paterno">
+                            </div>
+                            <div class="input-group mb-3 mt-3">
+                                <input type="text" class="form-control" name="UsuarioApeMaterno" placeholder="Apellido Materno">
                             </div>
                             <div class="input-group mb-3 mt-3">
                                 <div class="input-group-prepend">
@@ -59,14 +65,14 @@
                                 <input type="text" class="form-control" name="correo" placeholder="Correo electronico" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
                             <div class="input-group">
-                                <input type="password" class="form-control" name="contraseña" placeholder="Contraseña">
+                                <input type="text" class="form-control" name="contraseña" placeholder="Contraseña">
                             </div>
 
                             <div class="input-group mt-3">
                                 <input type="password" class="form-control" name="Concontraseña" placeholder="Confirmar contraseña">
                             </div>
                             <div class="boton-s mx-auto col-2 mt-5 mb-5">
-                                <button type="submit" id="mainlogin" name="btnGuardar" class="btn btn-primary">Login</button>
+                                <button type="submit" id="mainlogin" name="btnGuardar" class="btn btn-primary">Registrate!!</button>
                             </div>
                         </form>
                     </div>

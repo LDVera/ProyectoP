@@ -5,12 +5,19 @@ $conexion = new mysqli('localhost', 'root', '', 'proyecto_dev') or die (mysqli_e
 
 	if(isset($_POST['btnGuardar'])){
 
-		$correo=$_POST['correo'];
-		$contra=$_POST['Contraseña'];
+
+
+		$USUARIO=$_POST['Usuario'];
+		$APELLIDO_PATERNO=$_POST['UsuarioApePaterno'];
+		$APELLIDO_MATERNO=$_POST['UsuarioApeMaterno'];
+		$CORREO=$_POST['correo'];
+		$CONTRASE=$_POST['contraseña'];
+		$UTIPO = 1;
 
 
 
-		$sentencia_sql="insert into Datos_logeo (usuario_Nombre, usuario_Apellido_Paterno, usuario_Apellido_Materno, usuario_Tipo, usuario_Correo, usuario_Contraseña) values ('$nombre',"Prueba","Prueba","Prueba","Prueba",'$contra')" ;
+		$sentencia_sql="insert into usuario (usuario_Nombre, usuario_ApellidoPaterno, usuario_ApellidoMaterno, usuario_Tipo, usuario_Correo, usuario_Contraseña) 
+		values ('$USUARIO','$APELLIDO_PATERNO','$APELLIDO_MATERNO','$UTIPO','$CORREO','$CONTRASE')" ;
 		$conexion -> query($sentencia_sql) or die ($conexion->error);
 	}
 
