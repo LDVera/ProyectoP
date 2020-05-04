@@ -22,26 +22,4 @@ if(isset($_POST['btnGuardar'])){
 	$conexion -> query($sentencia_sql) or die ($conexion->error);
 }
 
-
-if(isset($_POST['btnLogin'])){
-
-	$correo = $_POST['correoLogin'];
-	$pass =  $_POST['contraseñaLogin'];
-
-	$sql2 = "SELECT * FROM usuario WHERE usuarioCorreo = '$correo' and usuarioContraseña = '$pass'";
-	
-	$result = mysqli_num_rows($sql2);
-
-	if($result == 1)
-	{
-		//header("Location: pagina.html")
-		echo "Bienvenido:" .$correo;
-	}
-	else if ($result == 0) 
-	{
-		header("Location: login.html");
-		//echo "No ingreso"; 
-	}
-
-}
- ?>
+?>

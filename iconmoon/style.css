@@ -1,0 +1,282 @@
+@font-face {
+    font-family: 'icomoon';
+    src: url('fonts/icomoon.eot?atn6ge');
+    src: url('fonts/icomoon.eot?atn6ge#iefix') format('embedded-opentype'), url('fonts/icomoon.ttf?atn6ge') format('truetype'), url('fonts/icomoon.woff?atn6ge') format('woff'), url('fonts/icomoon.svg?atn6ge#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-github:before {
+    content: "\e900";
+}
+
+.icon-twitter:before {
+    content: "\e901";
+    color: #1da1f2;
+}
+
+.icon-facebook:before {
+    content: "\e902";
+    color: #1877f2;
+}
+
+.icon-user-minus:before {
+    content: "\e903";
+}
+
+.icon-user:before {
+    content: "\e903";
+}
+
+.icon-user-remove:before {
+    content: "\e903";
+}
+
+.icon-profile:before {
+    content: "\e903";
+}
+
+.icon-avatar:before {
+    content: "\e903";
+}
+
+.icon-person:before {
+    content: "\e903";
+}
+
+.icon-member:before {
+    content: "\e903";
+}
+
+.icon-bin:before {
+    content: "\e904";
+}
+
+.icon-trashcan:before {
+    content: "\e904";
+}
+
+.icon-remove:before {
+    content: "\e904";
+}
+
+.icon-delete:before {
+    content: "\e904";
+}
+
+.icon-recycle:before {
+    content: "\e904";
+}
+
+.icon-dispose:before {
+    content: "\e904";
+}
+
+.icon-terminal:before {
+    content: "\e905";
+}
+
+.icon-console:before {
+    content: "\e905";
+}
+
+.icon-cmd:before {
+    content: "\e905";
+    color: white;
+}
+
+.icon-command-line:before {
+    content: "\e905";
+}
+
+.icon-cogs:before {
+    content: "\e906";
+}
+
+.icon-gears:before {
+    content: "\e906";
+}
+
+.icon-preferences:before {
+    content: "\e906";
+}
+
+.icon-settings:before {
+    content: "\e906";
+}
+
+.icon-generate:before {
+    content: "\e906";
+}
+
+.icon-control:before {
+    content: "\e906";
+}
+
+.icon-options:before {
+    content: "\e906";
+}
+
+.icon-display:before {
+    content: "\e907";
+}
+
+.icon-screen:before {
+    content: "\e907";
+}
+
+.icon-monitor:before {
+    content: "\e907";
+}
+
+.icon-computer:before {
+    content: "\e907";
+}
+
+.icon-desktop:before {
+    content: "\e907";
+}
+
+.icon-pc:before {
+    content: "\e907";
+    color: white;
+}
+
+.icon-cog:before {
+    content: "\e908";
+}
+
+.icon-gear:before {
+    content: "\e908";
+}
+
+.icon-preferences1:before {
+    content: "\e908";
+}
+
+.icon-settings1:before {
+    content: "\e908";
+}
+
+.icon-generate1:before {
+    content: "\e908";
+}
+
+.icon-control1:before {
+    content: "\e908";
+}
+
+.icon-options1:before {
+    content: "\e908";
+}
+
+.icon-clipboard:before {
+    content: "\e909";
+}
+
+.icon-board:before {
+    content: "\e909";
+    color: white;
+}
+
+.icon-signup:before {
+    content: "\e909";
+}
+
+.icon-register:before {
+    content: "\e909";
+}
+
+.icon-agreement:before {
+    content: "\e909";
+}
+
+.icon-enter:before {
+    content: "\e90a";
+}
+
+.icon-signin:before {
+    content: "\e90a";
+}
+
+.icon-login:before {
+    content: "\e90a";
+    color: white;
+}
+
+.icon-home:before {
+    content: "\e90b";
+}
+
+.icon-house:before {
+    content: "\e90b";
+    color: white;
+}
+
+.icon-home1:before {
+    content: "\e90c";
+}
+
+.icon-house1:before {
+    content: "\e90c";
+}
+
+.icon-github1:before {
+    content: "\e90d";
+}
+
+.icon-brand:before {
+    content: "\e90d";
+}
+
+.icon-octacat:before {
+    content: "\e90d";
+}
+
+.icon-social:before {
+    content: "\e90d";
+}
+
+.icon-twitter1:before {
+    content: "\e90e";
+}
+
+.icon-brand1:before {
+    content: "\e90e";
+}
+
+.icon-tweet:before {
+    content: "\e90e";
+}
+
+.icon-social1:before {
+    content: "\e90e";
+}
+
+.icon-facebook1:before {
+    content: "\e90f";
+}
+
+.icon-brand2:before {
+    content: "\e90f";
+}
+
+.icon-social2:before {
+    content: "\e90f";
+}
