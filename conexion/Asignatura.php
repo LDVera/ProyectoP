@@ -25,8 +25,11 @@ if(isset($_POST['AsginaturabtnConsultar'])){
     $query = mysqli_query($conn,"SELECT * FROM asignatura WHERE asignatura_Codigo = '".$CodigoAsignaturaConsulta."');
     $nr = mysqli_num_rows($query);
 
-    $n = mysqli_fetch_array($query);
-	$ID_T = $n['asignatura_id'];
+    $n=mysqli_fetch_array($query);
+	/*$IDT=$n['asignaturaCodigo'];*/
+
+
+	$_POST["asigcon"]=echo $n["asignatura_Nombre"];
     
     
 }

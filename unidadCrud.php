@@ -53,7 +53,10 @@
                             <div class="input-group mb-3 mt-3">
                                 <input type="text" class="form-control" name="AsignaturaCodigo" placeholder="Codigo de la asignatura">
                             </div>
-
+                            <div class="input-group mb-3 mt-3">
+                                <input type="text" class="form-control" name="asigcon" placerholder="Asignatura">
+                                
+                            </div>
 
 
                             <div class="boton-s mx-auto col-9 pl-5 ml-4 mt-5 mb-5">
