@@ -22,14 +22,14 @@ if($nr == 1)
 	$n = mysqli_fetch_array($query);
 	$ID_T = $n['usuario_Tipo'];
 	if($ID_T == 0){
-		header("Location: ../Administradores.html");
+		header("Location: ../Administradores.php");
 	}else if($ID_T == 1){
 		echo "biendenido Usuario!!, disfruta tu experiencia!";
 	}
 }
 else if ($nr == 0) 
 {
-	header("Location: login.html");
+	header("Location: ../Administradores.php");
 	//echo "No ingreso"; 
 }
 	

@@ -16,7 +16,7 @@
 
 .administradoresC {
     height: 1000px;
-    background-color: black;
+    background-color: grey;
 }
 
 .lat {
@@ -35,5 +35,9 @@
 }
 
 .degradado {
+    background-color: white;
+}
+
+.contenedor_asignatura_alta {
     background-color: white;
 }

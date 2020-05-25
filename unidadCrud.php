@@ -45,17 +45,16 @@
                     <div class="col-10 mx-auto mt-3">
                         <form action="conexion/Asignatura.php" method="POST">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="idAsignatura"><?php echo: ?>
+                                <input type="text" class="form-control" name="idAsignatura" placeholder="id de asignatura">
                             </div>
                             <div class="input-group">
-                                <input type="text" class="form-control" name="Asignatura" placeholder="Nombre de la asignatura">
+                                <input type="text" class="form-control" name="AsignaturaNombre" placeholder="Nombre de la asignatura">
                             </div>
                             <div class="input-group mb-3 mt-3">
                                 <input type="text" class="form-control" name="AsignaturaCodigo" placeholder="Codigo de la asignatura">
                             </div>
                             <div class="input-group mb-3 mt-3">
-                                <input type="text" class="form-control" name="asigcon" placerholder="Asignatura">
-                                
+                                <input type="text" class="form-control" name="asigcon" placerholder="Asignatura">                
                             </div>
 
 
