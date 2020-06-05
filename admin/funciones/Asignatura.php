@@ -16,7 +16,7 @@ if(isset($_POST['AsignaturabtnGuardar'])){
 
 	$conexion -> query($sentencia_sql) or die ($conexion->error);
 
-	header("Location: ../Administradores.php");
+	header("Location: ../Area_admins_CRUDAsignatura.php");
 }
 
 

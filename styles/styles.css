@@ -34,8 +34,15 @@
     font-size: xx-large;
 }
 
-.degradado {
-    background-color: white;
+.encabezado1 {
+    color: white;
+    font-size: 20px;
+}
+
+.encabezado1:hover {
+    background-color: rgba(255, 255, 255, 0.329);
+    text-decoration: none;
+    color: white;
 }
 
 .contenedor_asignatura_alta {

@@ -42,18 +42,21 @@
                     -->
                         <input type="text" class="form-control" name="correoLogin" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
+                    <div class="input-group">
+
                         <input type="password" name="contraseñaLogin" class="form-control" plasceholder="Contraseña" id="exampleInputPassword1">
                     </div>
-                    <a href="registro.html">Requistrate aqui</a>
+
+                    <a href="registro.html">Requistrate aqasasaasui</a>
 
                     <div class="boton-s mx-auto col-4">
                         <button type="submit" id="mainlogin" name="btnLogin" class="btn btn-primary">Login</button>
                     </div>
+                    
 
 
                 </form>
+                <a href="#">Registrate</a>
             </div>
 
         </div>

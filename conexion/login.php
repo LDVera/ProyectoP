@@ -13,24 +13,24 @@ if (!$conn)
 
 $nombre = $_POST["correoLogin"];
 $pass = $_POST["contraseñaLogin"];
+$administrador = 0;
+$invitado = 1;
 
 $query = mysqli_query($conn,"SELECT * FROM usuario WHERE usuario_Nombre = '".$nombre."' and usuario_Contraseña = '".$pass."'");
-$nr = mysqli_num_rows($query);
+//$nr = mysqli_num_rows($query);
+$n = mysqli_fetch_array($query);
+$ID_T = $n['usuario_Tipo']; // 0  o  1
 
-if($nr == 1)
-{
-	$n = mysqli_fetch_array($query);
-	$ID_T = $n['usuario_Tipo'];
-	if($ID_T == 0){
-		header("Location: ../Administradores.php");
-	}else if($ID_T == 1){
-		echo "biendenido Usuario!!, disfruta tu experiencia!";
-	}
+if($ID_T == 0) //si entra al login
+{	
+	echo "<h1> USUARIO NO REGISTRADO </h1>";
 }
-else if ($nr == 0) 
+else if ($ID_T == 1) 
 {
-	header("Location: ../Administradores.php");
-	//echo "No ingreso"; 
+	header("Location: ../Usuarios.php");
+}
+else if($ID_T == 2){
+	header("Location: ../admin/Area_admins.php");
 }
 	
 

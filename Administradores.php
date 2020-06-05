@@ -1,4 +1,6 @@
-<?php   include("conexion/conex.php");
+<?php  include("conexion/conex.php"); 
+
+
 
     $query2 = "SELECT asignatura_Id, asignatura_Nombre FROM asignatura ORDER BY asignatura_Nombre";
 	$resultado2= mysqli_query($conexion, $query2);
@@ -48,6 +50,7 @@
             <div class=" mx-auto text-center col-8 mt-4">    
                 <div class="ADbienvenida">
                 BIENVENIDO ADMINISTRADOR!! BUENOS DIAS
+           
                 <p></p>
                 <p></p>
                     <h2>AQUI PUEDES DAR DE ALTA LAS ASGINATURAS</h2>
