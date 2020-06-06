@@ -851,11 +851,13 @@
         
             <form action="funciones/unidad.php" method="POST">
                 <div class="input-group pb-3">
-                  <input type="text" value="<?php echo $result1[0]['asignatura_Id']; ?>">
+                  <?php $idrere = $result1[0]['asignatura_Id']; ?>
+                  <input type="text" name="option" value="<?php echo $idrere ?>">
                   <input type="text" class="form-control" name="unidad" placeholder="Nombre de la unidad">
                 </div>
 
-                <button type="submit" id="mainlogin" name="UnidadbtnGuardar" class="btn btn-primary">Registrar</button>
+                <button type="submit" id="mainlogin" name="UnidadbtnGuardar" class="btn btn-primary">registrar</button>
+                <!--<a href="funciones/unidad.php?id=//?php echo $result1[0]['asignatura_Id']?>">Registrar</a>-->
             </form>
           
         </div>
