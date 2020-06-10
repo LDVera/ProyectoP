@@ -25,6 +25,8 @@
   <link rel="stylesheet" href="css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <link rel="stylesheet" href="../styles/estilos.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -197,7 +199,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../index3.html" class="nav-link">
+                <a href="Area_admins_CRUDTema.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tema</p>
                 </a>
@@ -222,13 +224,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../layout/top-nav.html" class="nav-link">
+                <a href="usuarios_info/Area_admins_UsuariosRegistro.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Crear usuario</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../layout/top-nav-sidebar.html" class="nav-link">
+                <a href="usuarios_info/Area_admins_Usuarios.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Consultar información</p>
                 </a>
@@ -715,6 +717,7 @@
         <div class="card-body">
           <!--AQUI SE CREARA EL CRUD DE ASIGNATURA -->
           <div class="card card-body ">
+          
             <form action="funciones/Asignatura.php" method="POST">
                 <div class="input-group">
                   <input type="text" class="form-control" name="Asignatura" placeholder="Nombre de la asignatura">
@@ -748,7 +751,8 @@
                     <td><?php echo $row['asignatura_Nombre'] ?></td>
                     <td><?php echo $row['asignatura_Codigo'] ?></td>
                     <td><a href="../conexion/eliminarAsignatura.php?id=<?php echo $row['asignatura_Id']?>"><i class="pl-5 nav-icon fas fa-trash"></i></a></td>
-                    <td><a href="#"><i class="pl-5 nav-icon fas fa-edit"></i></a></td>
+                    <td><a href="Area_admins_CRUDAsignatura_Modificacion.php?id=<?php echo $row['asignatura_Id']?>"><i class="pl-5 nav-icon fas fa-edit"></i></a></td>
+ 
 
 
                   </tr>                     
@@ -756,7 +760,8 @@
                 </tbody>                
                </thead>
              </table>
-            </div>
+             
+            
         </div>
         
 
@@ -797,5 +802,6 @@
 <script src="js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="js/demo.js"></script>
+<script src="popup.js"></script>  
 </body>
 </html>

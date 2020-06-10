@@ -33,6 +33,4 @@ else if($ID_T == 2){
 	header("Location: ../admin/Area_admins.php");
 }
 	
-
-
 ?>

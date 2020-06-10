@@ -739,9 +739,6 @@
                                 <input type="text" class="form-control" name="contraseña" placeholder="Contraseña" value="<?php echo $row['usuario_Contraseña']?>">
                             </div>
 
-                            <div class="input-group mt-3">
-                                <input type="password" class="form-control" name="Concontraseña" placeholder="Confirmar contraseña">
-                            </div>
                             <div class="boton-s mx-auto col-2 mt-5 mb-5">
                                 <button type="submit" id="mainlogin" name="BTN11" class="btn btn-primary"><a href="actualiza_user.php?id=<?php echo $row['usuario_Id']?>"><i class="pl-5 nav-icon fas fa-edit"></i></a></button>
                             </div>

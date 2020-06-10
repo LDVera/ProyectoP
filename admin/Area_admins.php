@@ -187,7 +187,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../index3.html" class="nav-link">
+                <a href="Area_admins_CRUDTema.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tema</p>
                 </a>
@@ -675,7 +675,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Blank Page</h1>
+            <h1>Bienvenido Administrador</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -691,6 +691,7 @@
     <section class="content">
 
       <!-- Default box -->
+      <!--
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">Title</h3>
@@ -706,11 +707,14 @@
           Start creating your amazing application!
         </div>
         <!-- /.card-body -->
+        <!--
         <div class="card-footer">
           Footer
         </div>
         <!-- /.card-footer-->
+        <!--
       </div>
+      -->
       <!-- /.card -->
 
     </section>

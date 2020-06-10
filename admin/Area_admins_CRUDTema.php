@@ -2,24 +2,40 @@
   
   require ('../conexion/con_prueba.php');
   $objData = new Database1();
+  $objData2 = new Database2();
 
   if(isset($_GET['option'])){
    
     $id=$_GET['option'];
     $sth1 = $objData->prepare('SELECT * from asignatura A INNER JOIN unidad U on U.asignatura_id = A.asignatura_Id WHERE A.asignatura_Id = :asignatura_Id');
+    $sth2 = $objData2 ->prepare('SELECT * FROM unidad U INNER JOIN tema T on T.unidad_Id = U.unidad_Id WHERE U.unidad_Id = :unidad_Id');
+
     $sth1 ->bindParam(':asignatura_Id', $_GET['option']);
+    $sth2 ->bindParam(':unidad_Id', $_GET['option']);
+
     $sth1->execute();
+    $sth2->execute();
 
     $result1 = $sth1->fetchAll();
+    $result2 = $sth2->fetchAll();
 
-
+    $unidad_id = $result1[0]['unidad_Id'];
+  $uniunidad = $unidad_id;
   }
+  
+
+  
+
 
     $sth = $objData -> prepare('SELECT asignatura_Id, asignatura_Nombre  FROM asignatura ORDER BY asignatura_Id');
     $sth->execute();
-    
     $result =$sth->fetchAll();
-    
+
+    $sth2 = $objData2 -> prepare('SELECT tema_Id, tema_Nombre FROM tema ORDER BY tema_Id ');
+    $sth2->execute();
+    $result2 = $sth2->fetchAll();
+
+   
     
 
   
@@ -28,6 +44,7 @@
 	//$resultado2= mysqli_query($conexion, $query2);
 
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +65,9 @@
   <script type="text/javascript">
     function buscar(){
       var option = document.getElementById('names').value;
-      window.location.href = 'http://localhost/ProyectoP/admin/Area_admins_CRUDUnidad.php?option='+ option;
+      window.location.href = 'http://localhost/ProyectoP/admin/Area_admins_CRUDTema.php?option='+ option;
+      window.location.href = 'http://localhost/ProyectoP/admin/Area_admins_CRUDTema.php?option='+ option2;
+
       
 
     }
@@ -225,7 +244,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="Area_admins_CRUDTema.php" class="nav-link">
+                <a href="../../index3.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tema</p>
                 </a>
@@ -240,7 +259,7 @@
           </li>
           
           <li class="nav-item has-treeview">
-            <a href="usuarios_info/Area_admins_Usuarios.php" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Usuarios
@@ -713,7 +732,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Area de unidades</h1>
+            <h1>Blank Page</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -731,7 +750,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Seleccionar unidad</h3>
+          <h3 class="card-title">Consulta para unidad</h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -741,128 +760,72 @@
           </div>
         </div>
         <div class="card-body">
-        <!--CONTENIDO DE LA PRIMER TARJETA-->  
+          <div class="row card flex-row d-flex">
+            <div class="card col-5 pb-4">
+              <div class="contenedor_asignatura_alta col-4">
+                <p>Asignatura:</p>
+                <select name="names" id="names" onChange="return buscar();">
+                  <?php
+                    if($result1){
+                  ?> 
+                  <option value="<?php echo $result1[0]['asignatura_Id']; ?>">
+                  <?php echo $result1[0]['asignatura_Nombre']; ?>
+                  </option> 
+              
+                  <?php
+                    }
+                  ?> 
 
-        <!--- Primer Tarjeta -->
-        <div class="row card flex-row d-flex">
-          <div class="card col-5 pb-4">
-          <div class="contenedor_asignatura_alta col-4">
-          <p>Asignatura:</p>
-          <select name="names" id="names" onChange="return buscar();">
-            <?php
-            if($result1){
-              ?> 
-            <option value="<?php echo $result1[0]['asignatura_Id']; ?>">
-              <?php echo $result1[0]['asignatura_Nombre']; ?>
-            </option> 
-              
-              <?php
-            }
-            
-            ?>
-
-            <option value=""></option>
-            <?php
-
-            foreach ($result as $key => $value) {?>
-              
-             <option value="<?php echo $value['asignatura_Id'];?>">
-              <?php echo $value['asignatura_Nombre'];?>
-              
-              
-            </option>
-             
-             <?php
-            }
-            ?>
-          </select>
-          <p>ID:</p>
-          <?php if($result1){ ?>
-              <input type="text" value="<?php echo $result1[0]['asignatura_Id'] ?>">
-            
-            
-            <?php}else{?>
-            
-            <?php
-          }
+                  <option value=""></option>
+                  <?php
+                    foreach ($result as $key => $value) {?>
+                      <option value="<?php echo $value['asignatura_Id'];?>">
+                    <?php echo $value['asignatura_Nombre'];?>
+                  </option>
+                  <?php
+                    }
+                  ?>
+                  </select>
+                  <p>ID:</p>
+                  
+                    
+                    <input type="text" value="<?php echo $result1[0]['asignatura_Id'] ?>">
+                  
           
-          ?>
-          
-        </div>
-
-        </div>
-        <div class="card col-7 ">
-          
-
-          <table class="table col-12 table-success table-bordered">
-            <thead>
-              <tr>
-                <th>id</th>
-                <th>asignatura Id</th>
-                <th>nombre de unidad</th>
-                <th>Eliminar</th>
-                <th>Modificar</th>
-                
-              </tr>
+              </div>
+            </div>
+            <div class="card col-7 ">
+              <table class="table col-12 table-success table-bordered">
+                <thead>
+                  <tr>
+                    <th>id</th>
+                    <th>asignatura Id</th>
+                    <th>nombre de unidad</th>
+                    <th>eliminar</th>
+                    <th>modificar</th>
+                  </tr>
               
-              <tbody>
-              <?php 
-              require '../conexion/conex.php';
-              $pruebaRow = $_GET['option'];
-              $query = "SELECT * FROM unidad where asignatura_id = '$pruebaRow'";
-              $resulta_task = mysqli_query($conexion, $query);
-              while ($row = mysqli_fetch_array($resulta_task)){ ?>
-              <tr>
-                <td><?php echo $row['unidad_Id'];?></td>
-                <td><?php echo $row['asignatura_id'];?></td>
-                <td><?php echo $row['unidad_Nombre'];?></td>
-                <td><a href="funciones/Unidad_Eliminar.php?id1=<?php echo $row['unidad_Id']?>"><i class="pl-5 nav-icon fas fa-trash"></i></a></td>
-                <td><a href="Area_admins_CRUDUnidad_Modificacion.php?id=<?php echo $row['unidad_Id']?>"><i class="pl-5 nav-icon fas fa-edit"></i></a></td>
-              
-              </tr>
-              
-              <?php } ?>
+                <tbody>
+                <?php 
+                  require '../conexion/conex.php';
+                  $pruebaRow = $_GET['option'];
+                  $query = "SELECT * FROM unidad where asignatura_id = '$pruebaRow'";
+                  $resulta_task = mysqli_query($conexion, $query);
+                  while ($row = mysqli_fetch_array($resulta_task)){ ?>
+                  <tr>
+                    <td><?php echo $row['unidad_Id'];?></td>
+                    <td><?php echo $row['asignatura_id'];?></td>
+                    <td><?php echo $row['unidad_Nombre'];?></td>
+                    <td><a href="funciones/Unidad_Eliminar.php?id1=<?php echo $row['unidad_Id']?>"><i class="pl-5 nav-icon fas fa-trash"></i></a></td>
+                    <td><a href="Area_admins_CRUDUnidad_Modificacion.php?id=<?php echo $row['unidad_Id']?>"><i class="pl-5 nav-icon fas fa-edit"></i></a></td>
+                  </tr>
+                <?php } ?>
                 </tbody> 
               
-            </thead>
-          </table>
-        </div> <!--final-->
-        </div>
-        
-        
-        <!--/CONTENIDO DE LA PRIMER TARJETA-->  
-        </div>
-        <!-- /.card-body -->
-
-
-
-        <!-- SEGUNDA TARJETA-->
-        <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Creacion de unidad</h3>
-
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fas fa-times"></i></button>
+                </thead>
+              </table>
+            </div> <!--final-->          
           </div>
-        </div>
-        <div class="card-body">
-          
-
-        
-            <form action="funciones/unidad.php" method="POST">
-                <div class="input-group pb-3">
-                  <?php $idrere = $result1[0]['asignatura_Id']; ?>
-                  <input type="text" name="option" value="<?php echo $idrere ?>">
-                  <input type="text" class="form-control" name="unidad" placeholder="Nombre de la unidad">
-                </div>
-
-                <button type="submit" id="mainlogin" name="UnidadbtnGuardar" class="btn btn-primary">registrar</button>
-                <!--<a href="funciones/unidad.php?id=//?php echo $result1[0]['asignatura_Id']?>">Registrar</a>-->
-            </form>
-          
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
@@ -872,6 +835,110 @@
       </div>
       <!-- /.card -->
 
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Consulta del tema</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+              <i class="fas fa-minus"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+              <i class="fas fa-times"></i></button>
+          </div>
+        </div>
+        <!-- card body -->
+        <div class="card-body row flex-row d-flex ">
+        
+          <div class="card col-5">
+            <div class="input-group pb-3">
+              <select name="names" id="names" onChange="return buscar();">
+                  <?php
+                    if($result2){
+                  ?> 
+                  <option value="<?php echo $result2[0]['unidad_Id']; ?>">
+                  <?php echo $result2[0]['tema_Id']; ?>
+                  </option> 
+              
+                  <?php
+                    }
+                  ?> 
+
+                  <option value=""></option>
+                  <?php
+                      foreach ($result2 as $key => $value) {?>
+                        <option value="<?php echo $value['tema_Id'];?>">
+                      <?php echo $value['tema_Id'];?>
+                    </option>
+                    <?php
+                      }
+                    ?>
+                  </select>
+                  
+            </div>
+              <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST">
+                  <input type="text" name="elidtema" >                   
+                  <input type="submit" name="envio" value="consultar">
+                  
+              </form>
+                      
+                      
+            
+          </div>
+
+          <div class="card col-7">
+          <table class="table col-12 table-success table-bordered">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>asignatura Id</th>
+                <th>nombre de tema</th>
+                <th>Eliminar</th>
+                <th>Modificar</th>
+                
+              </tr>
+              
+              <tbody>
+              <?php 
+              require '../conexion/conex.php';
+
+                if(isset($_POST)){
+                  
+                  $id = $_POST['elidtema'];
+                  
+                  $query = "SELECT * FROM tema where tema_id = '$id'";
+                  $resulta_task = mysqli_query($conexion, $query);
+                }
+                while ($row = mysqli_fetch_array($resulta_task)){ 
+              ?>
+              
+              <tr>
+                <td><?php echo $row['tema_Id'];?></td>
+                <td><?php echo $row['unidad_Id'];?></td>
+                <td><?php echo $row['tema_Nombre'];?></td>
+                <td><a href="funciones/Tema_Eliminar.php?id2=<?php echo $row['tema_Id']?>"><i class="pl-5 nav-icon fas fa-trash"></i></a></td>
+                <td><a href="Area_admins_CRUDTema_Modificacion.php?id=<?php echo $row['tema_Id']?>"><i class="pl-5 nav-icon fas fa-edit"></i></a></td>
+              
+              </tr>
+              
+              <?php } ?>
+                </tbody> 
+              
+            </thead>
+          </table>
+          </div> <!--final--> 
+        </div> 
+        <!-- /.card-body -->
+        <div class="card-footer">
+          Footer
+        </div>
+        <!-- /.card-footer-->
+      </div>
+      <!-- /.card -->
+
+
+
+
+<!--##############################################################################################-->
     </section>
     <!-- /.content -->
   </div>

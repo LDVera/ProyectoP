@@ -1,33 +1,13 @@
 <?php  
-  
-  require ('../conexion/con_prueba.php');
-  $objData = new Database1();
-
-  if(isset($_GET['option'])){
-   
-    $id=$_GET['option'];
-    $sth1 = $objData->prepare('SELECT * from asignatura A INNER JOIN unidad U on U.asignatura_id = A.asignatura_Id WHERE A.asignatura_Id = :asignatura_Id');
-    $sth1 ->bindParam(':asignatura_Id', $_GET['option']);
-    $sth1->execute();
-
-    $result1 = $sth1->fetchAll();
+  include("../conexion/conex.php"); 
 
 
-  }
 
-    $sth = $objData -> prepare('SELECT asignatura_Id, asignatura_Nombre  FROM asignatura ORDER BY asignatura_Id');
-    $sth->execute();
-    
-    $result =$sth->fetchAll();
-    
-    
-
-  
-  
-  //$query2 = "SELECT asignatura_Id, asignatura_Nombre FROM asignatura ORDER BY asignatura_Nombre";
-	//$resultado2= mysqli_query($conexion, $query2);
+  $query2 = "SELECT asignatura_Id, asignatura_Nombre FROM asignatura ORDER BY asignatura_Nombre";
+	$resultado2= mysqli_query($conexion, $query2);
 
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,14 +25,8 @@
   <link rel="stylesheet" href="css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <script type="text/javascript">
-    function buscar(){
-      var option = document.getElementById('names').value;
-      window.location.href = 'http://localhost/ProyectoP/admin/Area_admins_CRUDUnidad.php?option='+ option;
-      
 
-    }
-  </script>
+  <link rel="stylesheet" href="../styles/estilos.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -202,7 +176,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview">
+               <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -225,7 +199,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="Area_admins_CRUDTema.php" class="nav-link">
+                <a href="../../index3.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tema</p>
                 </a>
@@ -240,7 +214,7 @@
           </li>
           
           <li class="nav-item has-treeview">
-            <a href="usuarios_info/Area_admins_Usuarios.php" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Usuarios
@@ -713,7 +687,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Area de unidades</h1>
+            <h1>Aqui puedes Gestionar las Asignaturas</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -731,7 +705,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Seleccionar unidad</h3>
+          <h3 class="card-title">Asignaturas</h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -741,129 +715,63 @@
           </div>
         </div>
         <div class="card-body">
-        <!--CONTENIDO DE LA PRIMER TARJETA-->  
-
-        <!--- Primer Tarjeta -->
-        <div class="row card flex-row d-flex">
-          <div class="card col-5 pb-4">
-          <div class="contenedor_asignatura_alta col-4">
-          <p>Asignatura:</p>
-          <select name="names" id="names" onChange="return buscar();">
+          <!--AQUI SE CREARA EL CRUD DE ASIGNATURA -->
+          <div class="card card-body ">
             <?php
-            if($result1){
-              ?> 
-            <option value="<?php echo $result1[0]['asignatura_Id']; ?>">
-              <?php echo $result1[0]['asignatura_Nombre']; ?>
-            </option> 
-              
-              <?php
-            }
-            
+              $ID = $_GET['id'];
+              $query = "SELECT * FROM asignatura WHERE asignatura_Id = '$ID'";
+              $re = mysqli_query($conexion, $query);
+              $row = mysqli_fetch_array($re);
             ?>
-
-            <option value=""></option>
-            <?php
-
-            foreach ($result as $key => $value) {?>
-              
-             <option value="<?php echo $value['asignatura_Id'];?>">
-              <?php echo $value['asignatura_Nombre'];?>
-              
-              
-            </option>
-             
-             <?php
-            }
-            ?>
-          </select>
-          <p>ID:</p>
-          <?php if($result1){ ?>
-              <input type="text" value="<?php echo $result1[0]['asignatura_Id'] ?>">
-            
-            
-            <?php}else{?>
-            
-            <?php
-          }
           
-          ?>
-          
-        </div>
-
-        </div>
-        <div class="card col-7 ">
-          
-
-          <table class="table col-12 table-success table-bordered">
-            <thead>
-              <tr>
-                <th>id</th>
-                <th>asignatura Id</th>
-                <th>nombre de unidad</th>
-                <th>Eliminar</th>
-                <th>Modificar</th>
-                
-              </tr>
-              
-              <tbody>
-              <?php 
-              require '../conexion/conex.php';
-              $pruebaRow = $_GET['option'];
-              $query = "SELECT * FROM unidad where asignatura_id = '$pruebaRow'";
-              $resulta_task = mysqli_query($conexion, $query);
-              while ($row = mysqli_fetch_array($resulta_task)){ ?>
-              <tr>
-                <td><?php echo $row['unidad_Id'];?></td>
-                <td><?php echo $row['asignatura_id'];?></td>
-                <td><?php echo $row['unidad_Nombre'];?></td>
-                <td><a href="funciones/Unidad_Eliminar.php?id1=<?php echo $row['unidad_Id']?>"><i class="pl-5 nav-icon fas fa-trash"></i></a></td>
-                <td><a href="Area_admins_CRUDUnidad_Modificacion.php?id=<?php echo $row['unidad_Id']?>"><i class="pl-5 nav-icon fas fa-edit"></i></a></td>
-              
-              </tr>
-              
-              <?php } ?>
-                </tbody> 
-              
-            </thead>
-          </table>
-        </div> <!--final-->
-        </div>
-        
-        
-        <!--/CONTENIDO DE LA PRIMER TARJETA-->  
-        </div>
-        <!-- /.card-body -->
-
-
-
-        <!-- SEGUNDA TARJETA-->
-        <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Creacion de unidad</h3>
-
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fas fa-times"></i></button>
-          </div>
-        </div>
-        <div class="card-body">
-          
-
-        
-            <form action="funciones/unidad.php" method="POST">
-                <div class="input-group pb-3">
-                  <?php $idrere = $result1[0]['asignatura_Id']; ?>
-                  <input type="text" name="option" value="<?php echo $idrere ?>">
-                  <input type="text" class="form-control" name="unidad" placeholder="Nombre de la unidad">
+            <form action="funciones/Asignatura_modificar.php" method="POST">
+                <div class="input-group">
+                  <input type="hidden" name="id_asignatura" value="<?php echo $row['asignatura_Id'] ?>">
+                  <input type="text" class="form-control" name="Asignatura" placeholder="Nombre de la asignatura" value="<?php echo $row['asignatura_Nombre'] ?>">
                 </div>
+                <div class="input-group mb-3 mt-3">
+                  <input type="text" class="form-control" name="AsignaturaCodigo" placeholder="Codigo de la asignatura" value="<?php echo $row['asignatura_Codigo'] ?>">
+                </div>    
 
-                <button type="submit" id="mainlogin" name="UnidadbtnGuardar" class="btn btn-primary">registrar</button>
-                <!--<a href="funciones/unidad.php?id=//?php echo $result1[0]['asignatura_Id']?>">Registrar</a>-->
+                <button type="submit" id="mainlogin" name="BTN112" class="btn btn-primary">Registrar</button>
             </form>
-          
+          </div>     
+        <!-- SEGUNDA CARD  -->
+        <div class="card card-body ">
+          <div class=" m-0 col-12">
+            <table class="table col-12 table-success table-bordered " >
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>nombre</th>
+                  <th>codigo de Materia</th>
+                  <th>Eliminar</th>
+                  <th>Modificar</th>
+                </tr>
+                <tbody>
+                  <?php 
+                    $query = "SELECT * FROM asignatura";
+                    $resulta_task = mysqli_query($conexion, $query);
+                    while($row = mysqli_fetch_array($resulta_task)){ ?>
+                  <tr>
+                    <td><?php echo $row['asignatura_Id'] ?></td>
+                    <td><?php echo $row['asignatura_Nombre'] ?></td>
+                    <td><?php echo $row['asignatura_Codigo'] ?></td>
+                    <td><a href="../conexion/eliminarAsignatura.php?id=<?php echo $row['asignatura_Id']?>"><i class="pl-5 nav-icon fas fa-trash"></i></a></td>
+                    <td><a href="#"><i class="pl-5 nav-icon fas fa-edit"></i></a></td>
+
+
+
+                  </tr>                     
+                     <?php } ?>
+                </tbody>                
+               </thead>
+             </table>
+             
+            
         </div>
+        
+
         <!-- /.card-body -->
         <div class="card-footer">
           Footer
@@ -901,5 +809,6 @@
 <script src="js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="js/demo.js"></script>
+<script src="popup.js"></script>  
 </body>
 </html>

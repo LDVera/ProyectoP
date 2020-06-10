@@ -23,7 +23,7 @@
         <div class="formulario-inicio-sesion mx-auto">
 
             <div class="row mx-auto pt-2">
-                <div class="col-12 bienvenida_s text-center">
+                <div class="col-11 bienvenida_s text-center">
                     BIENVENIDO AL SISTEMA
 
                 </div>
@@ -49,7 +49,7 @@
 
                     <a href="registro.html">Requistrate aqasasaasui</a>
 
-                    <div class="boton-s mx-auto col-4">
+                    <div class="boton-s mx-auto col-6">
                         <button type="submit" id="mainlogin" name="btnLogin" class="btn btn-primary">Login</button>
                     </div>
                     
